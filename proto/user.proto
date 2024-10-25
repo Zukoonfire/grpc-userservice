@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package user;
+
+option go_package="github.com/Zukoonfire/grpc-userservice/proto;user";
+// The User message
+message User {
+  int32 id = 1;               // Unique identifier for the user
+  string name = 2;            // User's name
+  string email = 3;           // User's email address
+}
+
+// The UserService service
+service UserService {
+  // RPC method to create a user
+  rpc CreateUser(User) returns (User);
+  // RPC method to get a user by ID
+  rpc GetUser(UserRequest) returns (User);
+}
+
+// Request message for getting a user by ID
+message UserRequest {
+  int32 id = 1;               // User ID to fetch
+}
